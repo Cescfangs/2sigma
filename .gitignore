@@ -1,0 +1,9 @@
+
+*.pyc
+
+*.h5
+
+.ipynb_checkpoints/*
+2sigma-NSConflict-Cescfangs.py
+
+Based_on_greatness-checkpoint.ipynb
