@@ -45,3 +45,27 @@ def preprocess(path='train.h5'):
     excl = ['id', 'timestamp', 'y']
     feature_cols = [col for col in data.columns if col not in excl]
     return data, feature_cols
+
+
+def split_data(data, features='all'):
+    if features == 'all':
+        features = data.columns
+    X_train = data.loc[data.timestamp <= 905, features]
+    y_train = data.loc[data.timestamp <= 905, 'y']
+    X_test = data.loc[data.timestamp > 905, features]
+    y_test = data.loc[data.timestamp > 905, 'y']
+    return X_train, y_train, X_test, y_test
+
+
+def sort_dict(dict_to_sord, key=None, reverse=True):
+    return sorted(dict_to_sord.items(), key=key, reverse=reverse)
+
+
+def origin_features(data):
+    return [col for col in data.columns if col not in ['id', 'timestamp', 'y']]
+
+def addtional_features(feature_base, suffix):
+    return [col + suffix for col in feature_base]
+
+def excl_feature():
+    return ['id', 'timestamp', 'y']
